@@ -1,46 +1,30 @@
 // https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/practice-problems/algorithm/mystery-20/
 
 
-#include<bits/stdc++.h> 
+#include <iostream>
+
 using namespace std;
-
-bool isPerfectSquare(int n)
-{
-    for (int i = 1; i * i <= n; i++) {
-
-        // If (i * i = n) 
-        if ((n % i == 0) && (n / i == i)) {
-            return true;
-        }
-    }
-    return false;
-}
 
 void solve()
 {
-    int div = 0;
-    int n;
-    cin >> n;
+    int number, number_of_divisors = 0;
+    cin >> number;
 
-    for (int i = 1; i * i <= n; i++)
-        if (n % i == 0)
-            div += (div * div == n ? 1 : 2);
+    for(int divisor = 1; divisor*divisor <= number; divisor++)
+        if(number%divisor == 0)
+            number_of_divisors += (divisor*divisor == number ? 1 : 2);
 
-
-    if (isPerfectSquare(n)) cout << div - 1 << endl;
-    else cout << div << "\n";
+    cout << number_of_divisors << "\n";
 }
 
 int main()
 {
-    int t;
-    cin >> t;
+    int no_of_test_cases;
+    cin >> no_of_test_cases;
 
-    while (t--)
-    {
-      
+    while(no_of_test_cases--)
         solve();
-    }
 
     return 0;
 }
+
